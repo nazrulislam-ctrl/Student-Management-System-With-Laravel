@@ -24,9 +24,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-#Route::resource('/department','departmentController');
-// Route::get('/department', [App\Http\Controllers\departmentController::class, 'index'])->name('home');
-// Route::get('/student', [App\Http\Controllers\studentController::class, 'index'])->name('home');
+
 
 Route::get('department', [DpController::class, 'index']);
 Route::post('add-department', [DpController::class, 'store']);

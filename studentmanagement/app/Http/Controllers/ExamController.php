@@ -7,10 +7,15 @@ use App\Models\Exam;
 
 class ExamController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $exam = Exam::all();
-        return view('exam.index',compact('exam'));
+        $search= $request['search'] ?? "";
+        if($search != ""){
+            $exam = Exam::where('exam_title', 'LIKE', "%$search%")->orwhere('exam_type', 'LIKE', "%$search%")->orwhere('exam_date', 'LIKE', "%$search%")->get();
+        }else{
+            $exam = Exam::all();
+        }
+        return view('exam.index',compact('exam','search'));
     }
     public function store(Request $request )
     {

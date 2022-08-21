@@ -7,11 +7,17 @@ use App\Models\dp;
 
 class DpController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dpt = dp::all();
-        return view('dp.index',compact('dpt'));
-        // ->with('dpt',$dpt);
+        $search= $request['search'] ?? "";
+        if($search != ""){
+            $dpt = dp::where('department_initial', 'LIKE', "%$search%")->orwhere('department_name', 'LIKE', "%$search%")->get();
+        }else{
+            $dpt = dp::all();
+        }
+       
+        return view('dp.index',compact('dpt','search'));
+        
     }
 
     public function store(Request $request)

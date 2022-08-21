@@ -44,6 +44,13 @@
 
 <div class="container py-5">
     <div class="row">
+    <form action="" >
+      <div class="form-group">
+        <input type="search" name="search" id="" class="form-control" placeholder="Search by Department Initial or Department Name" value="{{$search}}">
+       </div>
+       <button class="btn btn-primary">Search</button>
+       <a href="department" class='btn btn-secondary'> Reset </a>
+      </form>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -61,6 +68,7 @@
                     <td>Department Name</td>
                     <td>No of Students</td>
                     <td>No of Faculties</td>         
+                    <td>Delete</td>         
                 </tr>
             </thead>
             <tbody>
@@ -71,7 +79,12 @@
                     <td>{{$d->no_of_students}}</td>
                     <td>{{$d->no_of_faculties}}</td>
                            
-                    
+                    <td>
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class='btn btn-danger float-end '>Delete</button>
+                    </form>
+                    </td>
                 </tr>
               @endforeach
             </tbody>

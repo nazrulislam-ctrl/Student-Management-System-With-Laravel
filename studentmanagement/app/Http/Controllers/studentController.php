@@ -11,12 +11,17 @@ class studentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         $students = studentModel::all();
-        return view('student.index')->with('students',$students);
-        // ,compact('students')
-        // ->with('students', $students)
+        $search= $request['search'] ?? "";
+        if($search != ""){
+            $students = studentModel::where('id', 'LIKE', "%$search%")->orwhere('name', 'LIKE', "%$search%")->orwhere('phone', 'LIKE', "%$search%")->orwhere('email', 'LIKE', "%$search%")->get();
+        }else{
+            $students = studentModel::all();
+        }
+        
+        return view('student.index',compact('students','search'));
+        
     }
 
     /**

@@ -59,41 +59,4 @@
                 </div>
                 <div class="card-body">
                 <div class="col-md-10">
-            <table class="table">
-            <thead>
-                <tr>
-                    <td>Exam Title</td>
-                    <td>Exam Type</td>
-                    <td>Marks</td>
-                    <td>Duration</td>
-                    <td>Exam Date</td>
-                    <td>Edit</td>
-                    
-                </tr>
-            </thead>
-            <tbody>
-              @foreach($exam as $e )
-              <tr>
-                    <td>{{$e->exam_title}}</td>
-                    <td>{{$e->exam_type}}</td>
-                    <td>{{$e->marks}}</td>
-                    <td>{{$e->duration}}</td>
-                    <td>{{$e->exam_date}}</td>
-                    
-                    <td>
-                      <a href="{{url('edit-exam/'.$e->exam_title)}}" class='btn btn-primary float-end'>Edit</a>
-                    </td>
-                
-                </tr>
-              @endforeach
-            </tbody>
-        </table>
-            </div>
-                </div>
-            </div>
-            <a href="home" class='btn btn-secondary float-end'> Go Back </a>
-        </div>
-    </div>
-</div>
-@endsection
-
+           

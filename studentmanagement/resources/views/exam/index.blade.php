@@ -49,6 +49,13 @@
 
 <div class="container py-5">
     <div class="row">
+    <form action="" >
+      <div class="form-group">
+        <input type="search" name="search" id="" class="form-control" placeholder="Search by Exam title or Exam type or Exam date" value="{{$search}}">
+       </div>
+       <button class="btn btn-primary">Search</button>
+       <a href="exam" class='btn btn-secondary'> Reset </a>
+      </form>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -67,6 +74,7 @@
                     <td>Marks</td>
                     <td>Duration</td>
                     <td>Exam Date</td>
+                    <td>Delete</td>
                     
                     
                 </tr>
@@ -80,7 +88,12 @@
                     <td>{{$e->duration}}</td>
                     <td>{{$e->exam_date}}</td>
                     
-        
+                    <td>
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class='btn btn-danger float-end '>Delete</button>
+                    </form>
+                    </td>
                 
                 </tr>
               @endforeach

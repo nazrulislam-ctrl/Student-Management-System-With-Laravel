@@ -7,10 +7,15 @@ use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-         $teachers = Teacher::all();
-        return view('teachers.index')->with('teachers',$teachers);
+        $search= $request['search'] ?? "";
+        if($search != ""){
+            $teachers = Teacher::where('id', 'LIKE', "%$search%")->orwhere('name', 'LIKE', "%$search%")->orwhere('phone', 'LIKE', "%$search%")->orwhere('email', 'LIKE', "%$search%")->get();
+        }else{
+            $teachers = Teacher::all();
+        } 
+        return view('teachers.index',compact('teachers','search'));
     }
 
     public function store(Request $request)

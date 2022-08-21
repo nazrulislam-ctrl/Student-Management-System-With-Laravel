@@ -13,10 +13,14 @@
 
 @section('content')
 <div class="container-fluid">
+</div>
+	<span id="top_span"><marquee>Note:- Welcome to The Portal of BRAC University Student Management System.</marquee></span>
+	<div id="left_side">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>        
+                <div class="card-header">{{ __('Dashboard') }}</div>
+                        
                 </div>
             </div>
         </div>
@@ -30,7 +34,8 @@
              <a href="/department" class="list-group-item list-group-item-action">Departments</a>
              <a href="/exam" class="list-group-item list-group-item-action">Exam</a>
              <a href="/courses" class="list-group-item list-group-item-action">Courses</a>
-            </div>                
+            </div>  
+            <img src={{asset('images/Student-Management-System-Guide-min.png')}} alt="" >              
             </div>
         </div>
             
